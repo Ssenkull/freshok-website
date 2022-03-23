@@ -1,0 +1,138 @@
+.main-slider {
+  &__wrapper {
+    @extend %background-image;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include r($lg) {
+      height: 500px;
+    }
+
+    @include r($tablet) {
+      height: 430px;
+    }
+
+    @include r($sm) {
+      height: 360px;
+    }
+
+    @include r($phone) {
+      height: 320px;
+    }
+  }
+
+  &__container {
+    width: 100%;
+    @include r($sm) {
+      padding: 0;
+    }
+  }
+
+  &__inner {
+    @extend %flex-column;
+    padding: 24px;
+    width: 100%;
+    border-radius: 4px;
+    background-color: rgba($white, 0.80);
+
+    @include r($tablet) {
+      padding: 20px;
+    }
+
+    @include r($sm) {
+      padding: 15px;
+    }
+  }
+
+  &__title {
+    max-width: 800px;
+    font-family: $ruda;
+    font-weight: $fw-900;
+    text-transform: uppercase;
+    margin-bottom: 9px;
+    color: $dark500;
+    font-size: 60px;
+    line-height: 78px;
+    @include line-clamp(3);
+
+    @include r($lg) {
+      font-size: 52px;
+      line-height: 58px;
+    }
+
+    @include r($tablet) {
+      font-size: 44px;
+      line-height: 50px;
+    }
+
+    @include r($sm) {
+      font-size: 36px;
+      line-height: 1.3;
+      margin-bottom: 20px;
+      font-weight: $fw-700;
+      @include line-clamp(2);
+    }
+
+    @include r($phone) {
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+  }
+
+  &__subtitle {
+    display: block;
+    color: $red700;
+  }
+
+  &__text {
+    margin-bottom: 32px;
+
+    @include r($sm) {
+      margin-bottom: 24px;
+    }
+  }
+
+  .btn {
+    align-self: flex-start;
+
+    @include r($sm) {
+      font-size: 14px;
+      padding: 12px 28px;
+    }
+  }
+
+  .slick-dots {
+    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 16px;
+    position: absolute;
+
+    li:not(:last-child) {
+      margin-right: 13px;
+    }
+
+    button {
+      width: 20px;
+      height: 20px;
+      background-color: $white;
+      border-radius: 50%;
+      border: 1px solid $silver600;
+      font-size: 0;
+
+      @include r($sm) {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+
+  .slick-active {
+    button {
+      background-color: $green400;
+      border-color: $green400;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@include('components/_head.html',{
+title: "Фрешок | Страница каталогa"
+})
+
+@include('components/_header.html')
+<main>
+  <h1 class="sr-only">список продуктов</h1>
+  @include('components/_breadcrumbs.html')
+  <section class="shop">
+    <div class="container">
+      <h2 class="shop__title">Каталог товаров</h2>
+      <div class="shop__inner">
+        @include('components/_filters.html')
+        @include('shop/_shop-content.html')
+      </div>
+    </div>
+  </section>
+  @include('components/_benefits.html')
+</main>
+@include('components/_footer.html')
+@include('components/_end.html')

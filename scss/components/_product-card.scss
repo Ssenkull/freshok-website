@@ -1,0 +1,281 @@
+.product-card {
+  @extend %flex-column;
+  height: 100%;
+  position: relative;
+  padding: 57px 0 18px;
+  border: 1px solid $silver500;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+  letter-spacing: 0.03em;
+  background-color: $white;
+  text-align: left;
+
+  @include r($tablet) {
+    padding-bottom: 12px;
+  }
+
+  &:hover {
+    border-color: $green900;
+  }
+
+  &__top {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 10px;
+    @extend %flex-between;
+    z-index: 5;
+  }
+
+  &__favorite {
+    margin-left: auto;
+    border-radius: 3px;
+    font-size: 0;
+    transition: box-shadow 0.3s;
+
+    &:focus {
+      box-shadow: 0 0 0 3px $white100;
+    }
+  }
+
+  &__icon {
+    width: 32px;
+    height: 33px;
+    transition: fill 0.3s;
+    fill: $silver600;
+
+    @include r($phone) {
+      width: 24px;
+      height: 21px;
+    }
+
+    &:hover {
+      fill: $yellow900;
+    }
+
+    &:active {
+      fill: rgba($yellow900, 0.5);
+    }
+  }
+
+  &__box {
+    position: relative;
+    margin-bottom: 18px;
+
+    @include r($tablet) {
+      margin-bottom: 8px;
+    }
+
+    &::before {
+      @extend %absolute-pseudo;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: transparent;
+      transition: background-color 0.3s;
+    }
+
+    &::after {
+      @extend %absolute-pseudo;
+      @extend %background-image;
+      background-size: auto;
+      top: 50%;
+      left: 50%;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: $white;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      background-image: url('../images/icons/product-search.svg');
+    }
+
+    &:hover::before {
+      background-color: rgba($black, 0.1);
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &__inner {
+    @extend %flex-column;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__img {
+    object-fit: contain;
+
+    @include r($tablet) {
+      width: 100%;
+      height: 180px;
+    }
+
+    @include r($phone) {
+      height: 126px;
+    }
+  }
+
+  &__title {
+    position: relative;
+    z-index: 10;
+    padding: 0 18px;
+    font-weight: $fw-600;
+    font-size: 14px;
+    border-radius: 3px;
+    transition: box-shadow 0.3s, color 0.3s;
+
+    @include r($tablet) {
+      padding: 0 12px;
+      margin-bottom: 48px;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 3px $white100;
+    }
+
+    &:hover {
+      color: $green900;
+    }
+
+    &:active {
+      color: rgba($green900, 0.7);
+    }
+  }
+
+  &__name {
+    @include line-clamp(3);
+
+  }
+
+  &__bottom {
+    @extend %flex-between;
+    padding: 0 18px;
+    line-height: 1;
+    text-align: left;
+    align-items: flex-end;
+    margin-top: auto;
+
+    @include r($tablet) {
+      padding: 0 12px;
+    }
+  }
+
+  &__prices {
+    color: $dark500;
+    @extend %flex-column;
+  }
+
+  &__price {
+    &--old {
+      position: relative;
+      color: $silver600;
+      margin-bottom: 5px;
+
+      &::before {
+        @extend %absolute-pseudo;
+        width: 45px;
+        height: 0.5px;
+        background-color: $silver600;
+        transform: rotate(-15deg);
+        top: 5px;
+      }
+    }
+  }
+
+  &__basket {
+    padding: 8px;
+    line-height: 0;
+  }
+
+  &__svg {
+    width: 16px;
+    height: 16px;
+    fill: $white;
+  }
+
+  &__status {
+    font-weight: $fw-600;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    margin-bottom: 5px;
+    display: block;
+
+    &--available {
+      color: $green400;
+    }
+
+    &--finished {
+      color: $red700;
+    }
+
+    &--beover {
+      color: $silver600;
+    }
+  }
+
+  &__description {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    line-height: 1;
+    margin: -22px 0 7px;
+    position: relative;
+  }
+
+  &__star {
+    position: relative;
+    padding-right: 19px;
+    font-family: $sans;
+    font-weight: $fw-700;
+    letter-spacing: 0.03em;
+
+    &::after {
+      @extend %absolute-pseudo;
+      top: -1px;
+      right: 0;
+      height: 16px;
+      width: 16px;
+      background-image: url("../images/icons/star.svg");
+      background-size: cover;
+    }
+  }
+}
+
+.badges {
+  @extend %flex-column;
+
+  &__item {
+    text-transform: uppercase;
+    padding: 3px 6px;
+    font-size: 10px;
+    font-weight: $fw-700;
+    border-radius: 6px;
+    color: $white;
+    line-height: 1;
+    align-self: flex-start;
+
+    &:not(:last-child) {
+      margin-bottom: 6px;
+    }
+
+    &--new {
+      background-color: $green900;
+    }
+
+    &--discount {
+      background-color: $red700;
+    }
+
+    &--hit {
+      background-color: $orange900;
+    }
+  }
+}
